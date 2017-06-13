@@ -5,7 +5,7 @@
 int selectLanguage();
 int validatePin(int language);
 int inflateMenu(int language); // returns the selection
-void transact(int selection);
+void transact(int selection, int language);
 
 // Inflate a menu of a language of users choice.
 int inflateMenu(int language)
@@ -37,7 +37,7 @@ int inflateMenu(int language)
     return transaction;
 }
 
-void transact(int transaction){
+void transact(int transaction, int language){
     float balance = 2000;
     float standingCharge = 500;
     float transferFee = 85;
@@ -49,9 +49,9 @@ void transact(int transaction){
             scanf("%d", &amount);
             if(amount < balance - standingCharge){
                 balance -= (float) amount;
-                printf("Transaction Successful. Withdrawn %.2f. Balance is %.2f.",(float) amount, balance);
+                (language == 1)?  printf("Transaction Successful. Withdrawn %.2f. Balance is %.2f.",(float) amount, balance) : printf("Huduma imeidhinishwa. Umetoa %.2f. Baki ya akaunti ni: %.2f.",(float) amount, balance);
             }else{
-                printf("\nYou have insufficient balance.\n");
+                (language == 1)? printf("\nYou have insufficient balance.\n") : printf("\nHuna pesa za kutosha. Umesota Jamaa!\n");
             }
             break;
 
@@ -64,9 +64,11 @@ void transact(int transaction){
             scanf("%d", &amount);
             if(amount < balance - (standingCharge + transferFee)){
                 balance -= (float) amount;
+                (language == 1)? printf("Transaction successful. You have transfered %d.", amount): printf("Huduma imeidhinishwa. Umetuma %d", amount );
             }else{
                 printf("\nYou have insufficient balance.\n");
             }
+            break;
 
         default:
             printf("Invalid Choice.");
