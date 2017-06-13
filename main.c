@@ -17,13 +17,13 @@ int main(void)
     // Start Active transaction session
     int transactionActive = 1;
     do{
-        transact(inflateMenu(language));
+        transact(inflateMenu(language), language);
         printf("\nDo you wish to perform another transaction?.\n\t1. Yes\t2. No\nSelection: ");
         scanf("%d", &transactionActive);
     }while(transactionActive == 1);
 
     // Good bye after Transaction
-    (language == 1)? printf("\nBye bye! Will miss your money!\n") : printf("\nKwaheri! Tuma pesa vizuri nanii!\n");
+    (language == 1)? printf("\nBye bye! Will miss your money!\n") : printf("\nKwaheri! Tumia pesa vizuri nanii!\n");
 
     return 0;
 }
