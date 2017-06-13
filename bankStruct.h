@@ -1,4 +1,5 @@
-#define BANKNAME "Funny Bank Kenya."
+#define BANKNAME "Funny Bank Kenya"
+#define SLOGAN "We delight in helping you grow"
 
 // Structure of a normal account holder.
 struct accountHolder{
