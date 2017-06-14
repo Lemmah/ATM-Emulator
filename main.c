@@ -15,10 +15,12 @@ int main(void)
     validatePin(language);
 
     // Start Active transaction session
+    float balance = 2000;
     int transactionActive = 1;
     do{
-        transact(inflateMenu(language), language);
-        printf("\nDo you wish to perform another transaction?.\n\t1. Yes\t2. No\nSelection: ");
+        balance = transact(balance, inflateMenu(language), language);
+        (language == 1)? printf("\nDo you wish to perform another transaction?.\n\t1. Yes\t2. No\nSelection: "):
+        printf("\nJe, unataka kuzidi?.\n\t1. Ndio\t2. La\nChaguo: ");
         scanf("%d", &transactionActive);
     }while(transactionActive == 1);
 
