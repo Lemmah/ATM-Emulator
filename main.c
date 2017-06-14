@@ -1,7 +1,7 @@
 // Our bank acc struct.
-#include "bankStruct.h"
+#include "headers/bankStruct.h"
 // Our ATM sequence of events
-#include "events.h"
+#include "headers/events.h"
 
 int main(void)
 {
