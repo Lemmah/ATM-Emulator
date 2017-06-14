@@ -8,8 +8,10 @@ int validatePin(int language);
 int inflateMenu(int language); // returns the selection
 float transact(float balance, int selection, int language);
 int withdrawCash(float amount, float balance, float standingCharge, int language);
+int deposit(float amount, float balance, int language);
 void checkBalance(float balance, int language);
 int transferCash(float balance, float standingCharge, float transferFee, float amount, int language);
+void printMinistatement(int language);
 
 
 // 1. Allowing users to select language of preference between English and Kiswahili.
@@ -107,6 +109,14 @@ float transact(float balance, int transaction, int language){
             balance = transferCash(balance, standingCharge, transferFee, amount, language);
             break;
 
+        case 4:
+            printMinistatement(language);
+            break;
+
+        case 5:
+            balance = deposit(amount, balance,language);
+            break;
+
         default:
             (language == 1)? printf("\nInvalid choice.\n") : printf("\nChaguo duni jamaa!\n");
             break;
@@ -176,4 +186,19 @@ int transferCash(float balance, float standingCharge, float transferFee, float a
             }
     }
     return balance;
+}
+
+// 6.4: Deposit some cash
+int deposit(float amount, float balance, int language){
+    (language == 1)? printf("Enter amount to deposit: ") :printf("Unaweka pesa ngapi: ");
+    scanf("%f", &amount);
+    balance += amount;
+    (language == 1)?  printf("Transaction Successful. Deposited %.2f. Balance is %.2f.",(float) amount, balance) : printf("Huduma imeidhinishwa. Umeongeza %.2f. Baki ya akaunti ni: %.2f.",(float) amount, balance);
+
+    return balance;
+}
+
+// 6.5: Print ministatement
+void printMinistatement(int language){
+    (language == 1)? printf("\nPlease collect your ministatement...\n"): printf("\nChukua ministatement yako jamaa!\n");;
 }
